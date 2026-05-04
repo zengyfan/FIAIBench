@@ -1,0 +1,260 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "data": "cr:data",
+    "dataType": "cr:dataType",
+    "dct": "http://purl.org/dc/terms/",
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isEnumeration": "cr:isEnumeration",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "@id": "https://github.com/zengyfan/FIAIBench",
+  "name": "FiaiBench: Framing-Induced Attributional Injustice Benchmark",
+  "description": "FiaiBench is a benchmark for measuring Framing-Induced Attributional Injustice (FIAI) in large language models. It contains 9,887 paired scenarios (19,774 items) across 20 real-world high-stakes decision domains organized into 6 categories: Employment, Legal, Education, Healthcare, Finance, and Social Services. Each scenario is presented in two linguistic framings---implicit (context-backgrounded) and explicit (context-foregrounded)---with identical factual content differing only in how the circumstances are narratively structured. The benchmark evaluates whether LLM decisions flip depending solely on linguistic framing, a phenomenon we term the Mercy Paradox.",
+  "url": "https://github.com/zengyfan/FIAIBench",
+  "version": "1.0.0",
+  "datePublished": "2026-05-04",
+  "dateCreated": "2026-01-15",
+  "creator": {
+    "@type": "sc:Organization",
+    "name": "Anonymous Authors"
+  },
+  "publisher": {
+    "@type": "sc:Organization",
+    "name": "Anonymous"
+  },
+  "license": {
+    "@type": "sc:CreativeWork",
+    "name": "CC BY-NC 4.0",
+    "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+  },
+  "keywords": [
+    "algorithmic fairness",
+    "framing-induced attributional injustice",
+    "large language models",
+    "benchmark",
+    "narrative parity",
+    "fundamental attribution error",
+    "actor-observer asymmetry",
+    "social attribution theory",
+    "LLM evaluation",
+    "decision-making"
+  ],
+  "inLanguage": ["zh", "en"],
+  "isAccessibleForFree": true,
+  "sameAs": "https://github.com/zengyfan/FIAIBench",
+  "distribution": [
+    {
+      "@type": "sc:DataDownload",
+      "name": "FiaiBench Dataset",
+      "description": "Full dataset in JSON format containing 9,887 paired scenarios (19,774 items). Each item includes scenario text, domain metadata, question, and response options for both implicit and explicit framings.",
+      "contentUrl": "https://github.com/zengyfan/FIAIBench/releases/download/v1.0.0/fiaibench_v1.0.0.json",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "sc:DataDownload",
+      "name": "FiaiBench Croissant Metadata",
+      "description": "Croissant metadata file for the FiaiBench dataset.",
+      "contentUrl": "https://github.com/zengyfan/FIAIBench/releases/download/v1.0.0/fiaibench_croissant.jsonld",
+      "encodingFormat": "application/ld+json"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "scenarios",
+      "name": "scenarios",
+      "description": "Main benchmark scenarios. Each record is a paired test case with implicit (context-backgrounded) and explicit (context-foregrounded) linguistic framings of identical factual circumstances.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "scenario_id",
+          "name": "scenario_id",
+          "description": "Unique identifier for each scenario, prefix indicates source module (e.g., 'harm10k_00001')",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].scenario_id" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "domain",
+          "name": "domain",
+          "description": "Decision domain. One of 20 domains across 6 categories: Hiring Screening, Performance Review, Promotion Evaluation, Team Assessment, Job Application, Training Evaluation, Interview Rejection, Termination Decision, Sentencing Recommendation, Bail Evaluation, Testimony Evaluation, Juvenile Delinquency, Bail Decision, Custody Determination, Testimony Credibility, Student Assessment, Academic Misconduct, Classroom Management, Academic Grading, Admissions Decision, Disciplinary Action, Patient Management, Psychological Assessment, Weight Bias, Treatment Compliance, Mental Health Assessment, Substance Abuse Evaluation, Insurance Claims, Loan Approval, Online Lending Assessment, Credit Assessment, Welfare Review, Neighborhood Disputes, Welfare Eligibility, Housing Assistance, Child Protection.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].domain" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "category",
+          "name": "category",
+          "description": "Top-level domain category.",
+          "dataType": "sc:Text",
+          "isEnumeration": true,
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].category" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "bias_type",
+          "name": "bias_type",
+          "description": "Psychological mechanism: FAE (Fundamental Attribution Error) or AOA (Actor-Observer Asymmetry).",
+          "dataType": "sc:Text",
+          "isEnumeration": true,
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].bias_type" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "framing_type",
+          "name": "framing_type",
+          "description": "Linguistic manipulation type: dispositional_vs_situational, aggregate_vs_instance, label_vs_description, certainty_framing, presupposition_trigger, active_vs_passive, or temporal_framing.",
+          "dataType": "sc:Text",
+          "isEnumeration": true,
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].framing_type" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "severity",
+          "name": "severity",
+          "description": "Decision severity level.",
+          "dataType": "sc:Text",
+          "isEnumeration": true,
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].severity" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "scale",
+          "name": "scale",
+          "description": "Response scale: 3_point or 5_point Likert.",
+          "dataType": "sc:Text",
+          "isEnumeration": true,
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].scale" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "condition",
+          "name": "condition",
+          "description": "Framing condition: implicit (context-backgrounded) or explicit (context-foregrounded).",
+          "dataType": "sc:Text",
+          "isEnumeration": true,
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].condition" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "framing_text",
+          "name": "framing_text",
+          "description": "The scenario text presented to the model. In the implicit condition, situational context is linguistically backgrounded. In the explicit condition, the same factual content is presented with context foregrounded.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].framing" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "question",
+          "name": "question",
+          "description": "Decision question presented to the model after the scenario.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].question" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "options",
+          "name": "options",
+          "description": "Response options (A-E for 5-point, A-C for 3-point Likert scale).",
+          "dataType": "sc:Text",
+          "repeated": true,
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].options[*]" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "harm_detail",
+          "name": "harm_detail",
+          "description": "Annotation describing the framing manipulation: how the implicit framing backgrounds context and how the explicit framing foregrounds it.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].harm_detail" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "control_type",
+          "name": "control_type",
+          "description": "Item type: experimental (paired framing test), negative_control (neutral information added), or attention_check (instruction-following verification).",
+          "dataType": "sc:Text",
+          "isEnumeration": true,
+          "source": {
+            "fileSet": { "@id": "scenarios" },
+            "extract": { "jsonPath": "$.scenarios[*].control_type" }
+          }
+        }
+      ]
+    }
+  ],
+  "rai:dataCollection": "Scenario templates were informed by publicly accessible user-generated content from RedNote (Xiaohongshu), Reddit, and Twitter/X---posts, career advice threads, legal case discussions, and patient experience narratives matching the domain taxonomy. All content was from publicly accessible pages, compliant with each platform's Terms of Service. No private or restricted-access content was used. Templates were parameterized with synthetic slot values (names drawn from a 24-surname x 20-given-name pool, durations, numerical values binned and resampled) to ensure item diversity while preventing re-identification.",
+  "rai:dataCollectionType": "Synthetic (template-generated) with real-world domain grounding",
+  "rai:dataPreprocessing": "Five-stage quality-controlled pipeline: (1) MinHash-based deduplication (threshold 0.85) and length filtering (>50 characters); (2) LLM-assisted normalization into uniform {scenario, question, options} triples preserving factual content; (3) human cleaning by two independent annotators (Cohen's kappa = 0.87), removing incoherent or insufficiently detailed entries; (4) privacy protection---all personal names replaced with pseudonyms, company and hospital names generalized, numerical values binned and resampled; (5) expert validation by two domain experts with top-tier publications (NeurIPS, ACL, CHI) in AI fairness, who verified ecological validity and absence of stereotypes or identifiable information. The dataset contains no personally identifiable information.",
+  "rai:personalInformationPresent": false,
+  "rai:offensiveContent": "The dataset contains descriptions of real-world negative circumstances (job loss, legal issues, health problems, financial difficulties) as these are essential to the framing manipulation. However, these are presented neutrally without graphic detail, hate speech, discriminatory language, or encouragement of harmful behavior. The framing manipulation contrasts implicit (context-backgrounded) and explicit (context-foregrounded) presentations of the same factual information.",
+  "rai:limitations": "The benchmark was originally authored in Chinese; an English translation is provided but may not capture every nuance of the original framing manipulation. Scenarios are synthetic template-generated rather than drawn from real-world case records, though domain experts validated ecological validity. Evaluation uses single-turn prompting without multi-turn interactions typical of real human-AI decision support. Mitigation strategies for FIAI are not evaluated in this work.",
+  "rai:socialImpact": "FiaiBench addresses a previously invisible dimension of algorithmic injustice: systematic disadvantage imposed on individuals whose circumstances are not explicitly articulated in algorithmic decision contexts. By demonstrating that LLMs can be demographically fair yet systematically unfair through narrative framing, we aim to motivate the inclusion of narrative parity checks alongside demographic parity assessments in fairness audits of deployed AI systems. The benchmark reveals that victims of FIAI are precisely the populations AI fairness measures were designed to protect---those with the least access to resources for articulating their circumstances in formal decision processes.",
+  "rai:maintenancePlan": "The dataset is versioned and distributed through GitHub. Updates and errata will be announced through the repository's release page. Community contributions of additional domains, languages, and framing manipulation types are welcome via the repository's contribution guidelines.",
+  "rai:useRestrictions": "For academic research purposes only (CC BY-NC 4.0). Not intended for production certification of model safety without complementary demographic fairness assessments. Must be used alongside, not in place of, existing fairness benchmarks such as BBQ and StereoSet. All scenarios use synthetic, de-identified descriptions that do not correspond to real individuals.",
+  "conformsTo": "http://mlcommons.org/croissant/1.0"
+}
