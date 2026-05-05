@@ -1,14 +1,14 @@
-"""Analyze DeepSeek-V4-Flash self-test: expected vulnerabilities vs actual results."""
+"""Analyze Model A self-test: expected vulnerabilities vs actual results."""
 import json
 
-fae = json.load(open(r'D:\AutoResearchPipeline\autoresearch_output\phase4_raw_results\deepseek-v4-flash_fae.json', encoding='utf-8'))
-aoa = json.load(open(r'D:\AutoResearchPipeline\autoresearch_output\phase4_raw_results\deepseek-v4-flash_aoa.json', encoding='utf-8'))
+fae = json.load(open(r'D:\AutoResearchPipeline\autoresearch_output\phase4_raw_results\MODEL_A_fae.json', encoding='utf-8'))
+aoa = json.load(open(r'D:\AutoResearchPipeline\autoresearch_output\phase4_raw_results\MODEL_A_aoa.json', encoding='utf-8'))
 
 fae_results = fae['results']
 aoa_results = aoa['results']
 
 print("=" * 70)
-print("DEEPSEEK-V4-FLASH 自测深度分析")
+print("MODEL_A Self-Test Deep Analysis")
 print("=" * 70)
 
 # ===== FAE 深层分析 =====
@@ -99,9 +99,9 @@ print("""
 → 但有时候"区别对待"才是合理的社交推理
 
 【漏洞4：不同模型的差异预测】
-- GPT-5.x: 可能更强FAE（更少RLHF保守化）→ 更接近人类
-- Claude 4.7: 可能反FAE更强（安全对齐更激进）→ 过度矫正
-- Kimi k2.6: 自主归因可能更复杂（中文训练语料特点）
+- Model C: 可能更强FAE（更少RLHF保守化）→ 更接近人类
+- Model D: 可能反FAE更强（安全对齐更激进）→ 过度矫正
+- Model I: Attribution patterns may differ due to training data characteristics
 → 不同对齐策略会导致不同偏差模式
 
 【漏洞5：CoT vs 直接回答】

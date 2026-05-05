@@ -2,10 +2,9 @@
 AttributionBench: Universal LLM Experiment Runner
 =================================================
 Runs Harm20k benchmark on multiple LLMs via OpenAI-compatible API.
-Supports: DashScope, Zhipu, Moonshot, MiniMax (all OpenAI-compatible).
 
 Usage:
-  python experiment_runner.py --model qwen3.6-plus --sample 500
+  python experiment_runner.py --model MODEL_A --sample 500
   python experiment_runner.py --model all --full
 """
 import os
@@ -17,68 +16,64 @@ from datetime import datetime
 from openai import OpenAI
 
 # ============================================================
-# Model Registry
+# Model Registry (anonymized for double-blind review)
 # ============================================================
 MODELS = {
-    # Qwen series (DashScope native)
-    "qwen3.6-plus": {
-        "model_code": "qwen3.6-plus-2026-04-02",
-        "provider": "dashscope",
-        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "env_key": "DASHSCOPE_API_KEY",
-        "description": "Qwen 3.6 Plus",
+    "MODEL_A": {
+        "model_code": "MODEL_A",
+        "provider": "PROVIDER_A",
+        "base_url": "https://api.provider-a.example.com/v1",
+        "env_key": "LLM_API_KEY",
+        "description": "LLM Model A",
     },
-    "qwen3.5-flash": {
-        "model_code": "qwen3.5-flash",
-        "provider": "dashscope",
-        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "env_key": "DASHSCOPE_API_KEY",
-        "description": "Qwen 3.5 Flash",
+    "MODEL_B": {
+        "model_code": "MODEL_B",
+        "provider": "PROVIDER_A",
+        "base_url": "https://api.provider-a.example.com/v1",
+        "env_key": "LLM_API_KEY",
+        "description": "LLM Model B",
     },
-    "qwen3.6-35b-a3b": {
-        "model_code": "qwen3.6-35b-a3b",
-        "provider": "dashscope",
-        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "env_key": "DASHSCOPE_API_KEY",
-        "description": "Qwen 3.6 35B MoE",
+    "MODEL_C": {
+        "model_code": "MODEL_C",
+        "provider": "PROVIDER_A",
+        "base_url": "https://api.provider-a.example.com/v1",
+        "env_key": "LLM_API_KEY",
+        "description": "LLM Model C",
     },
-    # DeepSeek series (DashScope third-party)
-    "deepseek-v4-flash": {
-        "model_code": "deepseek-v4-flash",
-        "provider": "dashscope",
-        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "env_key": "DASHSCOPE_API_KEY",
-        "description": "DeepSeek V4 Flash",
+    "MODEL_D": {
+        "model_code": "MODEL_D",
+        "provider": "PROVIDER_A",
+        "base_url": "https://api.provider-a.example.com/v1",
+        "env_key": "LLM_API_KEY",
+        "description": "LLM Model D",
     },
-    "deepseek-v4-pro": {
-        "model_code": "deepseek-v4-pro",
-        "provider": "dashscope",
-        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "env_key": "DASHSCOPE_API_KEY",
-        "description": "DeepSeek V4 Pro",
+    "MODEL_E": {
+        "model_code": "MODEL_E",
+        "provider": "PROVIDER_A",
+        "base_url": "https://api.provider-a.example.com/v1",
+        "env_key": "LLM_API_KEY",
+        "description": "LLM Model E",
     },
-    # GLM / Kimi / MiniMax (try DashScope first, may need separate keys)
-    "glm-5.1": {
-        "model_code": "glm-5.1",
-        "provider": "dashscope",
-        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "env_key": "DASHSCOPE_API_KEY",
-        "description": "GLM 5.1",
+    "MODEL_F": {
+        "model_code": "MODEL_F",
+        "provider": "PROVIDER_A",
+        "base_url": "https://api.provider-a.example.com/v1",
+        "env_key": "LLM_API_KEY",
+        "description": "LLM Model F",
     },
-    "kimi-k2.6": {
-        "model_code": "kimi-k2.6",
-        "provider": "dashscope",
-        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "env_key": "DASHSCOPE_API_KEY",
-        "description": "Kimi K2.6",
+    "MODEL_G": {
+        "model_code": "MODEL_G",
+        "provider": "PROVIDER_A",
+        "base_url": "https://api.provider-a.example.com/v1",
+        "env_key": "LLM_API_KEY",
+        "description": "LLM Model G",
     },
-    "MiniMax-M2.5": {
-        "model_code": "MiniMax-M2.5",
-        "provider": "dashscope",
-        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "env_key": "DASHSCOPE_API_KEY",
-        "description": "MiniMax M2.5",
-        "no_extra_body": True,  # MiniMax doesn't support enable_thinking
+    "MODEL_H": {
+        "model_code": "MODEL_H",
+        "provider": "PROVIDER_A",
+        "base_url": "https://api.provider-a.example.com/v1",
+        "env_key": "LLM_API_KEY",
+        "description": "LLM Model H",
     },
 }
 
@@ -260,7 +255,7 @@ def run_benchmark(model_name, harm_items, sample_size=None, items_to_run=None,
 
 def main():
     parser = argparse.ArgumentParser(description="AttributionBench Experiment Runner")
-    parser.add_argument("--model", type=str, default="qwen3.6-plus",
+    parser.add_argument("--model", type=str, default="MODEL_J",
                         help=f"Model name or 'all'. Available: {list(MODELS.keys())}")
     parser.add_argument("--sample", type=int, default=None,
                         help="Sample N items (for quick test). Default: run all.")

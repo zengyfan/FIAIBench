@@ -1,5 +1,5 @@
 """
-Quick test runner: samples 500 balanced items and runs all 8 models.
+Quick test runner: samples 500 balanced items and runs all models.
 Token-optimized: max_tokens=5, system prompt forces single-letter output.
 Results saved per-model to phase4_raw_results/{model}_harm20k.json.
 """
@@ -9,9 +9,9 @@ import sys
 import random
 from collections import Counter
 
-# Ensure API key is set
-if not os.getenv("DASHSCOPE_API_KEY"):
-    os.environ["DASHSCOPE_API_KEY"] = "sk-c2a5bbb5acc14afdbc0ecff5ba7f0bae"
+# Set API key from environment
+if not os.getenv("LLM_API_KEY"):
+    os.environ["LLM_API_KEY"] = os.getenv("LLM_API_KEY", "")
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from experiment_runner import run_benchmark, MODELS
@@ -48,14 +48,14 @@ with open("autoresearch_output/phase4_raw_results/test_sample_500.json", 'w', en
 
 # Models to run (all 8)
 MODEL_ORDER = [
-    "qwen3.6-plus",
-    "qwen3.5-flash",
-    "qwen3.6-35b-a3b",
-    "deepseek-v4-flash",
-    "deepseek-v4-pro",
-    "glm-5.1",
-    "kimi-k2.6",
-    "MiniMax-M2.5",
+    "MODEL_J",
+    "MODEL_F",
+    "MODEL_G",
+    "MODEL_A",
+    "MODEL_B",
+    "MODEL_H",
+    "MODEL_I",
+    "MODEL_L",
 ]
 
 results_summary = {}

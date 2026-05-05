@@ -26,8 +26,8 @@ def merge_model_data(model_name):
                 seen_ids.add(iid)
     return all_results
 
-models = ['qwen3-5-flash', 'qwen3-6-35b-a3b', 'deepseek-v4-flash',
-          'deepseek-v4-pro', 'glm-5-1', 'kimi-k2-6']
+models = ['MODEL_F', 'MODEL_G', 'MODEL_A',
+          'MODEL_B', 'MODEL_H', 'MODEL_I']
 
 print("=" * 80)
 print("STEP 1: Merging data per model")
@@ -55,7 +55,7 @@ with open(f"{RAW}/complete_stats.json", 'w', encoding='utf-8') as f:
 print(f"\n{'=' * 80}")
 print("STEP 3: Generating figures")
 print("=" * 80)
-best = 'deepseek-v4-flash'
+best = 'MODEL_A'
 generate_all_figures(all_scores[best], best)
 fig7_model_comparison(all_scores)
 

@@ -1,6 +1,6 @@
 import json
 
-data = json.load(open(r'D:\AutoResearchPipeline\autoresearch_output\phase4_raw_results\deepseek-v4-flash_fae.json', encoding='utf-8'))
+data = json.load(open(r'D:\AutoResearchPipeline\autoresearch_output\phase4_raw_results\MODEL_A_fae.json', encoding='utf-8'))
 results = data['results']
 
 high = [r for r in results if r['condition']['constraint'] == 'high_constraint']
@@ -26,13 +26,13 @@ fae_strength = high_dispo - low_dispo
 print(f'FAE Strength = P(dispo|high) - P(dispo|low) = {high_dispo:.3f} - {low_dispo:.3f} = {fae_strength:.3f}')
 
 # AOA analysis
-aoa = json.load(open(r'D:\AutoResearchPipeline\autoresearch_output\phase4_raw_results\deepseek-v4-flash_aoa.json', encoding='utf-8'))
+aoa = json.load(open(r'D:\AutoResearchPipeline\autoresearch_output\phase4_raw_results\MODEL_A_aoa.json', encoding='utf-8'))
 aresults = aoa['results']
 actor = [r for r in aresults if r['condition']['perspective'] == 'actor']
 observer = [r for r in aresults if r['condition']['perspective'] == 'observer']
 
 print()
-print(f'=== DeepSeek-V4-Flash AOA Analysis ===')
+print(f'=== Model A AOA Analysis ===')
 print(f'Total: {len(aresults)} items ({len(actor)} actor, {len(observer)} observer)')
 print()
 

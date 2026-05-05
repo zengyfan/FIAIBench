@@ -279,10 +279,10 @@ def analyze_harm10k(model_name):
 
 
 # ---- Run analysis ----
-models_fae = ['deepseek-v4-flash', 'gpt-5.x', 'claude-4.7', 'gemini-3.1',
-              'qwen-3.6', 'hy3', 'kimi-k2.6', 'glm-5.1']
-models_implicit = ['deepseek-v4-flash', 'gpt-5.x', 'kimi-k2.6', 'glm-5.1']
-models_harm = ['deepseek-v4-flash', 'gpt-5.x', 'glm-5.1']
+models_fae = ['MODEL_A', 'MODEL_C', 'MODEL_D', 'MODEL_E',
+              'MODEL_J', 'MODEL_K', 'MODEL_I', 'MODEL_H']
+models_implicit = ['MODEL_A', 'MODEL_C', 'MODEL_I', 'MODEL_H']
+models_harm = ['MODEL_A', 'MODEL_C', 'MODEL_H']
 
 print("=" * 80)
 print("FAE ANALYSIS")

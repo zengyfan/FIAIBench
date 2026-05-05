@@ -55,9 +55,9 @@ CATEGORY_EN = {
 DOMAIN_TO_CAT = {d: c for c, ds in CATEGORY_EN.items() for d in ds}
 
 MODEL_DISPLAY = {
-    "qwen3-6-plus": "Qwen3.6-Plus", "qwen3-5-flash": "Qwen3.5-Flash",
-    "qwen3-6-35b-a3b": "Qwen3.6-35B", "deepseek-v4-flash": "DeepSeek-V4-Flash",
-    "deepseek-v4-pro": "DeepSeek-V4-Pro", "glm-5-1": "GLM-5.1", "kimi-k2-6": "Kimi-K2.6",
+    "MODEL_J": "Model J", "MODEL_F": "Model F",
+    "MODEL_G": "Model G", "MODEL_A": "Model A",
+    "MODEL_B": "Model B", "MODEL_H": "Model H", "MODEL_I": "Model I",
 }
 
 # ============= HELPERS =============
@@ -459,7 +459,7 @@ def generate_all():
 
     # Main text figures
     print("\n=== MAIN TEXT FIGURES ===")
-    best = 'deepseek-v4-flash'
+    best = 'MODEL_A'
     print(f"  [1/4] Dashboard: {best}")
     fig1_dashboard(scores, best)
     print(f"  [2/4] Domain Breakdown: {best}")

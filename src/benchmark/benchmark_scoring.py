@@ -487,7 +487,7 @@ def compute_all_models(raw_dir="phase4_raw_results", harm_path="phase4_raw_resul
     Args:
         raw_dir: directory containing {model}_harm20k.json files
         harm_path: path to harm20k items
-        model_names: list of model prefixes (e.g. ['qwen3-6-plus', ...])
+        model_names: list of model prefixes (e.g. ['MODEL_J', ...])
                      If None, auto-discovers all *_harm20k.json files.
 
     Returns:

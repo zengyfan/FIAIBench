@@ -37,20 +37,20 @@ plt.rcParams.update({
 
 # ── Light Color Palette ────────────────────────────────────────
 MODEL_COLORS = {
-    'deepseek-v4-flash':   '#A8D4F0',
-    'deepseek-v4-pro':     '#6EB8E0',
-    'qwen3-5-flash':       '#A8DFC0',
-    'qwen3-6-35b-a3b':     '#6EC89C',
-    'glm-5-1':             '#F0B8B0',
-    'kimi-k2-6':           '#C8B8E4',
+    'MODEL_A':   '#A8D4F0',
+    'MODEL_B':     '#6EB8E0',
+    'MODEL_F':       '#A8DFC0',
+    'MODEL_G':     '#6EC89C',
+    'MODEL_H':             '#F0B8B0',
+    'MODEL_I':           '#C8B8E4',
 }
 MODEL_DISPLAY = {
-    'deepseek-v4-flash':   'DeepSeek-V4-Flash',
-    'deepseek-v4-pro':     'DeepSeek-V4-Pro',
-    'qwen3-5-flash':       'Qwen3.5-Flash',
-    'qwen3-6-35b-a3b':     'Qwen3.6-35B',
-    'glm-5-1':             'GLM-5.1',
-    'kimi-k2-6':           'Kimi-K2.6',
+    'MODEL_A':   'Model A',
+    'MODEL_B':     'Model B',
+    'MODEL_F':       'Model F',
+    'MODEL_G':     'Model G',
+    'MODEL_H':             'Model H',
+    'MODEL_I':           'Model I',
 }
 
 CATEGORY_COLORS = {
@@ -372,8 +372,8 @@ def make_row3_mechanism_capability():
     # ── (b) Capability vs FIAI ──
     panel_label(ax2, '(b)')
     capability_map = {
-        'qwen3-5-flash': 1, 'deepseek-v4-flash': 2, 'kimi-k2-6': 3,
-        'glm-5-1': 4, 'deepseek-v4-pro': 5, 'qwen3-6-35b-a3b': 6,
+        'MODEL_F': 1, 'MODEL_A': 2, 'MODEL_I': 3,
+        'MODEL_H': 4, 'MODEL_B': 5, 'MODEL_G': 6,
     }
     models_with_cap = [m for m in MODEL_ORDER if m in capability_map]
     cap_vals = [capability_map[m] for m in models_with_cap]

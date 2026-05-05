@@ -7,13 +7,13 @@ import json, os
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "phase4_raw_results")
 
 EXTERNAL_MODELS = [
-    "gpt-5.x",
-    "hy3",
-    "gemini-3.1",
-    "claude-4.7",
-    "qwen-3.6",
-    "kimi-k2.6",
-    "glm-5.1"
+    "MODEL_C",
+    "MODEL_K",
+    "MODEL_E",
+    "MODEL_D",
+    "MODEL_J",
+    "MODEL_I",
+    "MODEL_H"
 ]
 
 # Count items
@@ -70,20 +70,20 @@ for model in EXTERNAL_MODELS:
     print(f"Created templates for {model}")
 
 # Create summary.json with current status
-with open(os.path.join(OUTPUT_DIR, "deepseek-v4-flash_fae.json"), "r", encoding="utf-8") as f:
+with open(os.path.join(OUTPUT_DIR, "MODEL_A_fae.json"), "r", encoding="utf-8") as f:
     ds_fae = json.load(f)
-with open(os.path.join(OUTPUT_DIR, "deepseek-v4-flash_aoa.json"), "r", encoding="utf-8") as f:
+with open(os.path.join(OUTPUT_DIR, "MODEL_A_aoa.json"), "r", encoding="utf-8") as f:
     ds_aoa = json.load(f)
 
 summary = {
     "experiment": "attribution_bench_v2",
     "status": "partial",
-    "completed_models": ["deepseek-v4-flash"],
+    "completed_models": ["MODEL_A"],
     "pending_models": EXTERNAL_MODELS,
     "models_completed": 1,
     "models_total": 8,
     "data_status": {
-        "deepseek-v4-flash": {"fae": "done", "aoa": "done"}
+        "MODEL_A": {"fae": "done", "aoa": "done"}
     },
     "instructions": f"Pending models need to execute phase4_task.md in sub-Agent or independent LLM pages. {len(EXTERNAL_MODELS)} models remaining."
 }

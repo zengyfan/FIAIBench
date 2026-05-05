@@ -164,8 +164,8 @@ def main():
     items = json.load(open(HARM_PATH, encoding='utf-8'))
     print(f"Loaded {len(items)} items from {HARM_PATH}")
 
-    models = ['deepseek-v4-flash', 'deepseek-v4-pro', 'glm-5.1', 'kimi-k2.6',
-              'qwen3.6-35b-a3b']
+    models = ['MODEL_A', 'MODEL_B', 'MODEL_H', 'MODEL_I',
+              'MODEL_G']
 
     t_total = time.time()
     for i, model_name in enumerate(models):

@@ -4,7 +4,7 @@
 
 FIAIBench measures a previously invisible dimension of algorithmic fairness: whether LLMs produce systematically different decisions for the same individual when their circumstances are linguistically framed differently, even with identical factual content. This phenomenon, termed Framing-Induced Attributional Injustice (FIAI), is orthogonal to demographic parity and rooted in social attribution theory.
 
-**Paper**: The Mercy Paradox — Measuring Framing-Induced Attributional Injustice in LLM via FIAIBench (NeurIPS 2026 Datasets & Benchmarks Track)
+**Paper**: The Mercy Paradox — Measuring Framing-Induced Attributional Injustice in LLM via FIAIBench (Under Review)
 
 ## Repository Structure
 
@@ -12,7 +12,7 @@ FIAIBench measures a previously invisible dimension of algorithmic fairness: whe
 ├── README.md
 ├── requirements.txt
 ├── src/
-│   ├── experiment/       # LLM API evaluation runners (8-model support)
+│   ├── experiment/       # LLM API evaluation runners
 │   ├── benchmark/        # Item generation & 14-dim FIAI scoring
 │   ├── analysis/         # Statistical analysis pipeline
 │   └── visualization/    # Publication-quality figure generation
@@ -57,10 +57,10 @@ CC BY-NC 4.0 — Academic research only.
 ## Citation
 
 ```bibtex
-@inproceedings{fiaibench2026,
+@misc{fiaibench2026,
   title={The Mercy Paradox: Measuring Framing-Induced Attributional Injustice in LLM via FIAIBench},
   author={Anonymous},
-  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
-  year={2026}
+  year={2026},
+  note={Under Review}
 }
 ```

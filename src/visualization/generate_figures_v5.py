@@ -20,14 +20,14 @@ plt.rcParams.update({
 })
 
 MODEL_COLORS = {
-    'deepseek-v4-flash': '#7EB8DC', 'deepseek-v4-pro': '#4A90C4',
-    'qwen3-5-flash': '#6EC49A', 'qwen3-6-35b-a3b': '#3D9E70',
-    'glm-5-1': '#E09088', 'kimi-k2-6': '#A890CC',
+    'MODEL_A': '#7EB8DC', 'MODEL_B': '#4A90C4',
+    'MODEL_F': '#6EC49A', 'MODEL_G': '#3D9E70',
+    'MODEL_H': '#E09088', 'MODEL_I': '#A890CC',
 }
 MODEL_DISPLAY = {
-    'deepseek-v4-flash': 'DeepSeek-V4-Flash', 'deepseek-v4-pro': 'DeepSeek-V4-Pro',
-    'qwen3-5-flash': 'Qwen3.5-Flash', 'qwen3-6-35b-a3b': 'Qwen3.6-35B',
-    'glm-5-1': 'GLM-5.1', 'kimi-k2-6': 'Kimi-K2.6',
+    'MODEL_A': 'Model A', 'MODEL_B': 'Model B',
+    'MODEL_F': 'Model F', 'MODEL_G': 'Model G',
+    'MODEL_H': 'Model H', 'MODEL_I': 'Model I',
 }
 SCORE_COLORS_5 = ['#E07070', '#F0A098', '#E0E0E0', '#88D0A8', '#58B878']
 HARSH_COLOR = '#E07070'; FAVOR_COLOR = '#58B878'
@@ -248,7 +248,7 @@ def make_row3():
 
     # (b) Capability
     panel_label(ax2, '(b)')
-    cap_map = {'qwen3-5-flash':1,'deepseek-v4-flash':2,'kimi-k2-6':3,'glm-5-1':4,'deepseek-v4-pro':5,'qwen3-6-35b-a3b':6}
+    cap_map = {'MODEL_F':1,'MODEL_A':2,'MODEL_I':3,'MODEL_H':4,'MODEL_B':5,'MODEL_G':6}
     mcap = [m for m in MODEL_ORDER if m in cap_map]
     cv = [cap_map[m] for m in mcap]
     rv = [STATS[m]['fiai']['rate']*100 for m in mcap]

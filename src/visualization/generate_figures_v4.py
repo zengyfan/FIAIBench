@@ -38,20 +38,20 @@ plt.rcParams.update({
 
 # ── DEEPER Pastel Colors (visible against white) ───────────────
 MODEL_COLORS = {
-    'deepseek-v4-flash':   '#7EB8DC',  # deeper sky blue
-    'deepseek-v4-pro':     '#4A90C4',  # medium blue
-    'qwen3-5-flash':       '#6EC49A',  # deeper mint
-    'qwen3-6-35b-a3b':     '#3D9E70',  # medium green
-    'glm-5-1':             '#E09088',  # deeper coral
-    'kimi-k2-6':           '#A890CC',  # deeper violet
+    'MODEL_A':   '#7EB8DC',  # deeper sky blue
+    'MODEL_B':     '#4A90C4',  # medium blue
+    'MODEL_F':       '#6EC49A',  # deeper mint
+    'MODEL_G':     '#3D9E70',  # medium green
+    'MODEL_H':             '#E09088',  # deeper coral
+    'MODEL_I':           '#A890CC',  # deeper violet
 }
 MODEL_DISPLAY = {
-    'deepseek-v4-flash':   'DeepSeek-V4-Flash',
-    'deepseek-v4-pro':     'DeepSeek-V4-Pro',
-    'qwen3-5-flash':       'Qwen3.5-Flash',
-    'qwen3-6-35b-a3b':     'Qwen3.6-35B',
-    'glm-5-1':             'GLM-5.1',
-    'kimi-k2-6':           'Kimi-K2.6',
+    'MODEL_A':   'Model A',
+    'MODEL_B':     'Model B',
+    'MODEL_F':       'Model F',
+    'MODEL_G':     'Model G',
+    'MODEL_H':             'Model H',
+    'MODEL_I':           'Model I',
 }
 
 CATEGORY_COLORS = {
@@ -386,8 +386,8 @@ def make_row3():
     # ── (b) Capability ──
     panel_label(ax2, '(b)')
     capability_map = {
-        'qwen3-5-flash': 1, 'deepseek-v4-flash': 2, 'kimi-k2-6': 3,
-        'glm-5-1': 4, 'deepseek-v4-pro': 5, 'qwen3-6-35b-a3b': 6,
+        'MODEL_F': 1, 'MODEL_A': 2, 'MODEL_I': 3,
+        'MODEL_H': 4, 'MODEL_B': 5, 'MODEL_G': 6,
     }
     models_with_cap = [m for m in MODEL_ORDER if m in capability_map]
     cap_vals = [capability_map[m] for m in models_with_cap]

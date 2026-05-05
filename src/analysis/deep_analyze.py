@@ -12,11 +12,11 @@ def load_json(filename):
     except:
         return json.load(open(path, encoding='utf-8'))
 
-# 1. Check what Claude-4.7 actually outputs
+# 1. Check what Model D actually outputs
 print("=" * 80)
 print("1. RESPONSE FORMAT CHECK")
 print("=" * 80)
-for model in ['claude-4.7', 'gemini-3.1', 'qwen-3.6', 'hy3', 'deepseek-v4-flash', 'kimi-k2.6']:
+for model in ['MODEL_D', 'MODEL_E', 'MODEL_J', 'MODEL_K', 'MODEL_A', 'MODEL_I']:
     try:
         data = load_json(f"{model}_fae.json")
         responses = [r['response'] for r in data['results'][:10]]
@@ -26,17 +26,17 @@ for model in ['claude-4.7', 'gemini-3.1', 'qwen-3.6', 'hy3', 'deepseek-v4-flash'
     except Exception as e:
         print(f"\n{model}: ERROR - {e}")
 
-# 2. Check if deepseek and gpt-5.x harm10k are identical
+# 2. Check if MODEL_A and MODEL_C harm10k are identical
 print("\n" + "=" * 80)
 print("2. HARM10K DATA INTEGRITY CHECK")
 print("=" * 80)
-ds = load_json("deepseek-v4-flash_harm10k.json")
-gpt = load_json("gpt-5.x_harm10k.json")
+ds = load_json("MODEL_A_harm10k.json")
+gpt = load_json("MODEL_C_harm10k.json")
 ds_responses = [r['response'] for r in ds['results']]
 gpt_responses = [r['response'] for r in gpt['results']]
 
-print(f"deepseek responses: {len(ds_responses)}")
-print(f"gpt-5.x responses: {len(gpt_responses)}")
+print(f"MODEL_A responses: {len(ds_responses)}")
+print(f"MODEL_C responses: {len(gpt_responses)}")
 
 # Compare first 100
 matches = sum(1 for a, b in zip(ds_responses[:100], gpt_responses[:100]) if a == b)
@@ -57,7 +57,7 @@ print(f"Item ID match: {id_matches}/{min(len(ds_ids), len(gpt_ids))}")
 print("\n" + "=" * 80)
 print("3. FAE IMPLICIT DATA CHECK")
 print("=" * 80)
-for model in ['deepseek-v4-flash', 'gpt-5.x', 'kimi-k2.6', 'glm-5.1']:
+for model in ['MODEL_A', 'MODEL_C', 'MODEL_I', 'MODEL_H']:
     try:
         data = load_json(f"{model}_fae_implicit.json")
         responses = [r['response'] for r in data['results']]
@@ -72,7 +72,7 @@ for model in ['deepseek-v4-flash', 'gpt-5.x', 'kimi-k2.6', 'glm-5.1']:
 print("\n" + "=" * 80)
 print("4. AOA IMPLICIT DATA CHECK")
 print("=" * 80)
-for model in ['deepseek-v4-flash', 'gpt-5.x', 'kimi-k2.6', 'glm-5.1']:
+for model in ['MODEL_A', 'MODEL_C', 'MODEL_I', 'MODEL_H']:
     try:
         data = load_json(f"{model}_aoa_implicit.json")
         responses = [r['response'] for r in data['results']]
@@ -87,7 +87,7 @@ for model in ['deepseek-v4-flash', 'gpt-5.x', 'kimi-k2.6', 'glm-5.1']:
 print("\n" + "=" * 80)
 print("5. AOA EXPLICIT RESPONSE DISTRIBUTIONS")
 print("=" * 80)
-for model in ['deepseek-v4-flash', 'gpt-5.x', 'claude-4.7', 'gemini-3.1', 'qwen-3.6', 'hy3', 'kimi-k2.6', 'glm-5.1']:
+for model in ['MODEL_A', 'MODEL_C', 'MODEL_D', 'MODEL_E', 'MODEL_J', 'MODEL_K', 'MODEL_I', 'MODEL_H']:
     try:
         data = load_json(f"{model}_aoa.json")
         responses = [r['response'] for r in data['results']]
@@ -115,9 +115,9 @@ for model in ['deepseek-v4-flash', 'gpt-5.x', 'claude-4.7', 'gemini-3.1', 'qwen-
 
 # 6. Check glm harm10k for interesting patterns
 print("\n" + "=" * 80)
-print("6. GLM-5.1 HARM10K DEEP DIVE")
+print("6. Model H HARM10K DEEP DIVE")
 print("=" * 80)
-glm = load_json("glm-5.1_harm10k.json")
+glm = load_json("MODEL_H_harm10k.json")
 implicit_glm = {}
 explicit_glm = {}
 for r in glm['results']:

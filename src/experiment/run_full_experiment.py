@@ -13,8 +13,8 @@ items = json.load(open('phase4_raw_results/harm_20k.json', encoding='utf-8'))
 print(f"Loaded {len(items)} items (~{len(items)//2} pairs)")
 
 MODELS_TO_RUN = [
-    'qwen3.6-plus', 'qwen3.5-flash', 'qwen3.6-35b-a3b',
-    'deepseek-v4-flash', 'deepseek-v4-pro', 'glm-5.1', 'kimi-k2.6'
+    'MODEL_J', 'MODEL_F', 'MODEL_G',
+    'MODEL_A', 'MODEL_B', 'MODEL_H', 'MODEL_I'
 ]
 
 t_total_start = time.time()

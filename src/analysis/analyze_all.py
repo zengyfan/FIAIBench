@@ -1,4 +1,4 @@
-"""Analyze all 8 models from 500-item test."""
+"""Analyze all models from benchmark test."""
 import json, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from benchmark_scoring import compute_fiai_scores, load_harm20k
@@ -8,9 +8,9 @@ RAW = "phase4_raw_results"
 harm_items = load_harm20k(f"{RAW}/harm_20k.json")
 
 models = [
-    "qwen3-6-plus", "qwen3-5-flash", "qwen3-6-35b-a3b",
-    "deepseek-v4-flash", "deepseek-v4-pro",
-    "glm-5-1", "kimi-k2-6", "MiniMax-M2-5",
+    "MODEL_J", "MODEL_F", "MODEL_G",
+    "MODEL_A", "MODEL_B",
+    "MODEL_H", "MODEL_I", "MODEL_L",
 ]
 
 all_scores = {}
@@ -42,7 +42,7 @@ with open(f"{RAW}/all_scores.json", 'w', encoding='utf-8') as f:
     json.dump(all_scores, f, ensure_ascii=False, indent=2)
 
 # Generate figures for first model
-first_model = "qwen3-6-plus"
+first_model = "MODEL_J"
 if first_model in all_scores:
     print(f"\nGenerating figures for {first_model}...")
     generate_all_figures(all_scores[first_model], first_model)
